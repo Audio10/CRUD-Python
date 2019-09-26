@@ -1,3 +1,31 @@
+
+
+
+
+
+
+
+
+
+
+# Introducción a PEP-8.
+
+## Indentación.
+
+Al programar en Python, la sangría es algo que definitivamente va a utilizar. Sin embargo, hay que tener cuidado con él, ya que puede conducir a errores de sintaxis. Por lo tanto, la recomendación es usar 4 espacios para el sangrado. Por ejemplo, esta declaración usa 4 espacios de sangría:
+
+```python
+if True:
+    print("If works")
+```
+
+Y también este bucle con la declaración de impresión tiene sangría con 4 espacios:
+
+```
+for element in range(0, 5):
+    print(element)
+```
+
 # 1.- Básicos del Lenguaje
 
 ## Funiciones basicas.
