@@ -10,6 +10,8 @@
 
 # Introducción a PEP-8.
 
+[Articulo Original](https://www.datacamp.com/community/tutorials/pep8-tutorial-python-code#intro)
+
 ## Indentación.
 
 Al programar en Python, la sangría es algo que definitivamente va a utilizar. Sin embargo, hay que tener cuidado con él, ya que puede conducir a errores de sintaxis. Por lo tanto, la recomendación es usar 4 espacios para el sangrado. Por ejemplo, esta declaración usa 4 espacios de sangría:
@@ -24,6 +26,245 @@ Y también este bucle con la declaración de impresión tiene sangría con 4 esp
 ```
 for element in range(0, 5):
     print(element)
+```
+
+Cuando escribe una expresión grande, es mejor mantener la expresión alineada verticalmente. Cuando haga esto, creará una "sangría colgante".
+
+Estos son algunos ejemplos de sangría colgante en expresiones grandes, que muestran algunas variaciones de cómo puede usarlo:
+
+```
+value = square_of_numbers(num1, num2,
+                       num3, num4)
+```
+
+```
+def square_of_number(
+     num1, num2, num3, 
+     num4):
+ return num1**2, num2**2, num3**2, num4**2
+```
+
+```
+value = square_of_numbers(
+              num1, num2,
+              num3, num4)
+```
+
+```
+list_of_people = [
+ "Rama",
+ "John",
+ "Shiva"
+]
+```
+
+```
+dict_of_people_ages = {
+ "ram": 25,
+ "john": 29,
+ "shiva": 26
+}
+```
+
+Cada desarrollador, que trabaja con Python u otro lenguaje de programación, se hace la pregunta en algún momento si usar tabs o espacios para la sangría. La diferencia entre tabs y espacios es una discusión continua en la comunidad. Mira, por ejemplo, [este artículo](https://translate.googleusercontent.com/translate_c?depth=1&rurl=translate.google.com&sl=en&sp=nmt4&tl=es&u=https://stackoverflow.blog/2017/06/15/developers-use-spaces-make-money-use-tabs/&xid=17259,1500004,15700019,15700186,15700191,15700256,15700259,15700262,15700265&usg=ALkJrhhmbN16ZVBAssV9SLNQZk_wvpZHxQ) .
+
+En general, los espacios son el medio de sangría preferido, pero si encuentra que algunos scripts de Python ya usan las tabs , debe seguir haciendo sangría con tabs. De lo contrario, debe cambiar la sangría de todas las expresiones en su script con espacios.
+
+**Tenga en cuenta** que Python 3 no permite mezclar tabs y espacios para la sangría. ¡Es por eso que debes elegir uno de los dos y seguir con él!
+
+## Longitud máxima de línea
+
+En general, es bueno apuntar a una longitud de línea de 79 caracteres en su código Python.
+
+Seguir este número objetivo tiene muchas ventajas. Algunos de ellos son los siguientes:
+
+- Es posible abrir archivos uno al lado del otro para comparar;
+- Puede ver toda la expresión sin desplazarse horizontalmente, lo que aumenta la legibilidad y la comprensión del código.
+
+Los comentarios deben tener 72 caracteres de longitud de línea. ¡Aprenderá más sobre las convenciones más comunes para comentarios más adelante en este tutorial!
+
+Al final, depende de usted qué convenciones y estilo de codificación le gusta seguir si trabaja en un grupo pequeño y es aceptable que la mayoría de los desarrolladores se desvíen de la guía de longitud máxima de línea. Sin embargo, si está realizando o contribuyendo a un proyecto de código abierto, probablemente quiera y / o deba cumplir con la regla de longitud máxima de línea establecida por PEP-8.
+
+Mientras usa el operador `+` , puede usar mejor un salto de línea adecuado, lo que hace que su código sea más fácil de entender:
+
+```
+total = (A +
+         B +
+         C)
+```
+
+```
+total = (A
+         +   B
+         +   C)
+```
+
+Alternativamente, también puedes escribir:
+
+```
+ total = A + B + C 
+```
+
+## Líneas en blanco
+
+En los scripts de Python, la función y las clases de nivel superior están separadas por dos líneas en blanco. Las definiciones de métodos dentro de las clases deben estar separadas por una línea en blanco. Puede ver esto claramente en el siguiente ejemplo:
+
+```python
+class SwapTestSuite(unittest.TestCase):
+    """
+        Swap Operation Test Case
+    """
+    def setUp(self):
+        self.a = 1
+        self.b = 2
+
+    def test_swap_operations(self):
+        instance = Swap(self.a,self.b)
+        value1, value2 =instance.get_swap_values()
+        self.assertEqual(self.a, value2)
+        self.assertEqual(self.b, value1)
+
+
+class OddOrEvenTestSuite(unittest.TestCase):
+    """
+        This is the Odd or Even Test case Suite
+    """
+    def setUp(self):
+        self.value1 = 1
+        self.value2 = 2
+
+    def test_odd_even_operations(self):
+        instance1 = OddOrEven(self.value1)
+        instance2 = OddOrEven(self.value2)
+        message1 = instance1.get_odd_or_even()
+        message2 = instance2.get_odd_or_even()
+        self.assertEqual(message1, 'Odd')
+        self.assertEqual(message2, 'Even')
+```
+
+Las clases `SwapTestSuite` y `OddOrEvenTestSuite` están separadas por dos líneas en blanco, mientras que las definiciones de métodos, como `.setUp()` y `.test_swap_operations()` solo tienen una línea en blanco para separarlas.
+
+## Espacios en blanco en expresiones y declaraciones
+
+Debe intentar evitar espacios en blanco cuando vea que su código está escrito tal como en los siguientes ejemplos:
+
+```python
+#DEBES USAR!!
+func( data, { pivot: 4 } )
+# Y NO!!
+func(data, {pivot: 4})
+
+
+#DEBES USAR!!
+indexes = (0,)
+# Y NO!!
+indexes = (0, )
+
+
+#DEBES USAR!!
+if x == 4: print x, y; x, y = y, x
+# Y NO!!
+if x == 4 : print x , y ; x , y = y , x
+
+
+#DEBES USAR!!
+spam(1)
+# Y NO!!
+spam (1)
+
+#DEBES USAR!!
+dct['key'] = lst[index]
+# Y NO!!
+dct ['key'] = lst [index]
+
+
+#DEBES USAR!!
+x = 1
+y = 2
+long_variable = 3
+
+# Y NO!!
+x             = 1
+y             = 2
+long_variable = 3
+
+
+#DEBES USAR!!
+def complex(real, imag=0.0):
+    return magic(r=real, i=imag)
+
+# Y NO!!
+def complex(real, imag = 0.0):
+    return magic(r = real, i = imag)
+
+
+
+```
+
+## Importaciones
+
+Importar bibliotecas y / o módulos es algo que suele hacer cuando trabaja con Python para la ciencia de datos. Como ya sabrás, siempre debes importar las bibliotecas al comienzo de tu script.
+
+**Tenga en cuenta** que si realiza muchas importaciones, debe asegurarse de indicar cada importación en una sola línea.
+
+Eche un vistazo a la siguiente tabla para comprender esto un poco mejor:
+
+```
+#Deberías usar...	
+from config import settings 
+  
+#O
+
+import os 
+import sys 
+```
+
+Además, debe tener en cuenta que hay un orden que debe respetar al importar bibliotecas. En general, puede seguir este orden:
+
+1. Importaciones de bibliotecas estándar.
+2. Importaciones de terceros relacionadas.
+3. Aplicación local / importaciones específicas de la biblioteca.
+
+## Comentarios.
+
+Los comentarios se utilizan para la documentación en código en Python. Se suman a la comprensión del código. Existen muchas herramientas que puede utilizar para generar documentación, como comentarios y cadenas de documentos, para su propio módulo. Los comentarios deben ser más detallados para que cuando alguien lea el código, la persona obtenga la comprensión adecuada del código y de cómo se está utilizando con otras partes del código.
+
+Los comentarios comienzan con el símbolo `#` . Cualquier cosa escrita después del hashtag no es ejecutada por el intérprete. Por ejemplo, el siguiente fragmento de código solo devolverá `"This is a Python comment"` .
+
+```python
+# This is a Python single line comment print("This is a Python comment") 
+```
+
+**Recuerde** : en la sección anterior, ¡leyó que los comentarios deben tener 72 caracteres de longitud de línea!
+
+Dicho esto, hay tres tipos de comentarios:
+
+- Utiliza los comentarios de bloque para explicar el código que es más complejo o desconocido para otros. Estos suelen ser comentarios de formato más largo y se aplican a algunos o todos los códigos que siguen. Los comentarios de bloque están sangrados al mismo nivel que el código. Cada línea de un comentario de bloque comienza con el hashtag `#` y un solo espacio. Si necesita usar más de un párrafo, deben estar separados por una línea que contenga un solo `#` .
+
+Eche un vistazo al siguiente extracto, [tomado de la biblioteca `scikit-learn`](https://translate.googleusercontent.com/translate_c?depth=1&rurl=translate.google.com&sl=en&sp=nmt4&tl=es&u=https://github.com/scikit-learn/scikit-learn/blob/master/sklearn/linear_model/least_angle.py&xid=17259,1500004,15700019,15700186,15700191,15700256,15700259,15700262,15700265&usg=ALkJrhgxMEiYaV51XWGr3fM7y3B_WgikYg) , para comprender cómo son estos comentarios:
+
+```python
+if Gram is None or Gram is False:
+        Gram = None
+        if copy_X:
+            # force copy. setting the array to be fortran-ordered
+            # speeds up the calculation of the (partial) Gram matrix
+            # and allows to easily swap columns
+            X = X.copy('F')
+```
+
+- Debe usar los comentarios en línea con moderación, aunque pueden ser efectivos cuando necesita explicar algunas partes de su código. También pueden ayudarlo a recordar lo que significa una línea específica de código o puede ser útil cuando colabora con alguien que no está familiarizado con todos los aspectos de su código. Utiliza comentarios en línea en la misma línea de una declaración, siguiendo el código mismo. Estos comentarios también comienzan con `#` y un solo espacio.
+
+Por ejemplo:
+
+```
+counter = 0 # initialize the counter 
+```
+
+Usted escribe cadenas de documentación o cadenas de documentación al comienzo de los módulos, archivos, clases y métodos públicos. Este tipo de comentarios comienzan con `"""` y terminan con `"""` :
+
+```python
+""" This module is intended to provide functions for scientific computing """ 
 ```
 
 # 1.- Básicos del Lenguaje
