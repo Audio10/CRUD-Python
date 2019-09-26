@@ -936,3 +936,11 @@ if __name__ == '__main__':
 
 En esta clase aprenderás a persistir datos en python, para esto aprenderás a utilizar la función Open, y la función close, una vez tengas claro eso, podrás comenzar a manipular tus archivos, en este caso utilizaremos un CSV que es un estándar de archivos separados por comas.
 
+Para la manipulación de archivos existen dos **readers** y dos **writers**.
+
+- **csv.render** y **csv.writer** nos permiten manipular los valores a través de listas que representan filas.
+  - Solo se puede acceder por índice a los valores.
+
+- **csv.DicReader** y **csv.DictWriter** nos permiten manipular los valores a través de diccionarios que representan filas.
+  - Se puede acceder a través de llaves a los valores.
+
