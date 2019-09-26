@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 # Introducción a PEP-8.
 
 [Articulo Original](https://www.datacamp.com/community/tutorials/pep8-tutorial-python-code#intro)
@@ -387,7 +377,7 @@ Para buscar donde vive la variable se ocupa la funcion id
 id(variable)
 ```
 
-## Metodos de un objeto.
+## Funciones de un objeto.
 
 Para ver los metodos que tiene un objeto se ocupa el metodo dir()
 
@@ -694,9 +684,7 @@ Dentro de la declaración **get** se establecen dos parámetros la llave por la 
 dic.get(llave, valor_defaul)
 ```
 
-## **Tuplas y conjuntos**
-
-### Tuplas
+## Tuplas
 
 **PUEDE TENER DUPLICADOS**
 
@@ -708,20 +696,63 @@ Uno de sus usos muy comunes es que cuando queremos regresar más de un valor en 
 
 Una de las características de las Estructuras de Datos es que cada una de ellas nos sirve para algo especifico. No existe en programación una navaja suiza que nos sirva para todos. los mejores programas son aquellos que utilizan la herramienta correcta para el trabajo correcto.
 
-Declarar
+### Declarar
 
 ```
+tupla = 1,2,3
 tupla = (1,2,3)
 ```
 
-### Conjunto
+### Acceso
+
+El acceso es por índice.
+
+```
+tupla[0]
+tupla[1]
+```
+
+### Funciones.
+
+Solo cuenta con dos métodos públicos.
+
+- **count** que retorna la cantidad de elementos que estan repetidos dentro de la tupla.
+
+```
+a = (1,1,1,2,3,4)
+
+a.count(1)
+#3
+
+a.count(2)
+#2
+```
+
+- **index** que retorna el indice donde aparece por primera vez el elemento buscado.
+
+```
+a.index(1)
+#0
+```
+
+## Conjunto
 
 **NO TIENE DUPLICADOS**
 
-Conjutos(**sets**) nacen de la teoría de conjuntos. Son una de las Estructuras más importantes y se parecen a las listas, podemos añadir varios elementos al conjuntos, pero **no pueden existir elementos duplicados**. A diferencia de los **tuples** podemos agregar y eliminar, son **mutables**.
+Conjuntos(**sets**) nacen de la teoría de conjuntos. Son una de las Estructuras más importantes y se parecen a las listas, podemos añadir varios elementos al conjuntos, pero **no pueden existir elementos duplicados**. A diferencia de los **tuples** podemos agregar y eliminar, son **mutables**.
 
 Los sets se pueden inicializar con la función **set**. Una recomendación es inicializarlos con esta función para no causar confusión con los diccionarios.
 
 - `add` nos sirve añadir elementos.
 - `remove` nos permite eliminar elementos.
+
+### Declaracion
+
+```
+a = set([1,2,3])
+
+b = {3,4,5}
+
+
+```
 
