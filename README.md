@@ -259,7 +259,7 @@ Usted escribe cadenas de documentación o cadenas de documentación al comienzo 
 
 # 1.- Básicos del Lenguaje
 
-## Funiciones basicas.
+## Funciones básicas.
 
 ### Archivo Main
 
@@ -293,16 +293,24 @@ bool($variable)
 float($variable)
 ```
 
-### Declaracion de una función.
+### Declaración de una función.
 
 ```python
 suma_de_dos_numeros(x, y):
 	return x + y
 ```
 
+### Visualización de funciones de un elemento o objeto.
+
+**dir** es utilizado para imprimir todas las funciones disponibles por un objeto, elemento o tipo de dato.
+
+```
+dir(elemento)
+```
+
 ## Scope
 
-Dentro de python el scope funciona de tal forma que una variable global no es visible para las demas funciones, amenos que esta sea invocada explicitamente.
+Dentro de python el scope funciona de tal forma que una variable global no es visible para las demás funciones, amenos que esta sea invocada explícitamente.
 
 Aunque si solo invocas la variable pero no la modificas no es necesario agregar el global.
 
@@ -335,7 +343,7 @@ else:
 
 ## Strings en Python.
 
-Declaracion y operaciones con Strings.
+Declaración y operaciones con Strings.
 
 ```python
 country = "Colombia"
@@ -371,7 +379,7 @@ country.isdigit()
 
 ## Direcciones de memoria.
 
-Para buscar donde vive la variable se ocupa la funcion id
+Para buscar donde vive la variable se ocupa la función id
 
 ```python
 id(variable)
@@ -379,13 +387,13 @@ id(variable)
 
 ## Funciones de un objeto.
 
-Para ver los metodos que tiene un objeto se ocupa el metodo dir()
+Para ver los métodos que tiene un objeto se ocupa el método dir()
 
 ```python
 dir(platzi)
 ```
 
-Donde todos los metodos que tenga doble guion bajo al final y al principio son metodos que se pueden sobre escribir.
+Donde todos los métodos que tenga doble guion bajo al final y al principio son métodos que se pueden sobre escribir.
 
 ```
 __METODO__
@@ -506,7 +514,7 @@ global_countries = copy.copy(countries)
 
 ```
 
-- Aunque no es la unica forma de copiar listas. puedes utilizar el método list.copy método interno (disponible desde Python 3.3):
+- Aunque no es la única forma de copiar listas. puedes utilizar el método list.copy método interno (disponible desde Python 3.3):
 
 ```python
 global_countries = countries.copy()
@@ -576,7 +584,7 @@ Las listas tienen varios métodos que podemos utilizar.
   order_numbers.sort()
   ```
 
-- `del`nos permite eliminar elementos vía indices, funciona con *slices*
+- `del`nos permite eliminar elementos vía índices, funciona con *slices*
 
   
 
@@ -641,7 +649,7 @@ def search_client(client_name):
 
 Los diccionarios se conocen con diferentes nombres a lo largo de los lenguajes de programación como HashMaps, Mapas, Objetos, etc. En Python se conocen como **Diccionarios**.
 
-Un diccionario es similar a una lista sabiendo que podemos acceder a través de un indice, pero en el caso de las listas este índice debe ser un número entero. Con los diccionarios puede ser cualquier objeto, normalmente los verán con **strings** para ser más explicitos, pero funcionan con muchos tipos de llaves…
+Un diccionario es similar a una lista sabiendo que podemos acceder a través de un índice, pero en el caso de las listas este índice debe ser un número entero. Con los diccionarios puede ser cualquier objeto, normalmente los verán con **strings** para ser más explícitos, pero funcionan con muchos tipos de llaves…
 
 Un diccionario es una asociación entre llaves(**keys**) y valores(**values**) y la referencia en Python es muy precisa. Si abres un diccionario verás muchas palabras y cada palabra tiene su definición.
 
@@ -716,7 +724,7 @@ tupla[1]
 
 Solo cuenta con dos métodos públicos.
 
-- **count** que retorna la cantidad de elementos que estan repetidos dentro de la tupla.
+- **count** que retorna la cantidad de elementos que están repetidos dentro de la tupla.
 
 ```
 a = (1,1,1,2,3,4)
@@ -728,7 +736,7 @@ a.count(2)
 #2
 ```
 
-- **index** que retorna el indice donde aparece por primera vez el elemento buscado.
+- **index** que retorna el índice donde aparece por primera vez el elemento buscado.
 
 ```
 a.index(1)
@@ -746,7 +754,7 @@ Los sets se pueden inicializar con la función **set**. Una recomendación es in
 - `add` nos sirve añadir elementos.
 - `remove` nos permite eliminar elementos.
 
-### Declaracion
+### Declaración
 
 ```
 a = set([1,2,3])
@@ -755,4 +763,176 @@ b = {3,4,5}
 
 
 ```
+
+### Acceso
+
+No se puede acceder por medio del índice solo se puede acceder.
+
+### Agregación
+
+Los elementos solo se agregan con la función add y estos solo se agregan si no hay algún duplicado dentro del set.
+
+```
+a.add(elemento)
+```
+
+### Operaciones
+
+**intersection** sirve para todos los elementos que están en a como en b
+
+```
+a.intersection(b)
+```
+
+**union** une todos los elementos de ambos sets.
+
+```
+a.union(b)
+```
+
+**difference** imprime los elementos de a que no estan en b.
+
+```
+a.difference(b)
+```
+
+**difference** imprime los elementos de b que no estan en a.
+
+```
+b.difference(a)
+```
+
+**remove** elimina determinado elemento.
+
+```
+a.remove(elemento)
+```
+
+## Introducción al modulo collections.
+
+El módulo collections nos brinda un conjunto de objetos primitivos que nos permiten extender el comportamiento de las built-in collections que poseé Python y nos otorga estructuras de datos adicionales. Por ejemplo, si queremos extender el comportamiento de un diccionario, podemos extender la clase UserDict; para el caso de una lista, extendemos UserList; y para el caso de strings, utilizamos UserString.
+
+Por ejemplo, si queremos tener el comportamiento de un diccionario podemos escribir el siguiente código:
+
+```python
+class SecretDict(collections.UserDict):
+
+   def _password_is_valid(self, password):
+        …
+
+    def _get_item(self, key):
+        … 
+
+    def __getitem__(self, key):
+         password, key = key.split(‘:’)
+         
+         if self._password_is_valid(password):
+              return self._get_item(key)
+         
+         return None
+
+my_secret_dict = SecretDict(...)
+my_secret_dict[‘some_password:some_key’] # si el password es válido, regresa el valor
+```
+
+Otra estructura de datos que vale la pena analizar, es namedtuple. Hasta ahora, has utilizado tuples que permiten acceder a sus valores a través de índices. Sin embargo, en ocasiones es importante poder nombrar elementos (en vez de utilizar posiciones) para acceder a valores y no queremos crear una clase ya que únicamente necesitamos un contenedor de valores y no comportamiento.
+
+```python
+Coffee = collections.NamedTuple(‘Coffee’, (‘size’, ‘bean’, ‘price’))
+def get_coffee(coffee_type):
+     If coffee_type == ‘houseblend’:
+         return Coffee(‘large’, ‘premium’, 10)
+```
+
+El módulo collections también nos ofrece otros primitivos que tienen la labor de facilitarnos la creación y manipulación de colecciones en Python. Por ejemplo, Counter nos permite contar de manera eficiente ocurrencias en cualquier iterable; OrderedDict nos permite crear diccionarios que poseen un orden explícito; deque nos permite crear filas (para pilas podemos utilizar la lista).
+
+En conclusión, el módulo collections es una gran fuente de utilerías que nos permiten escribir código más “pythonico” y más eficiente.
+
+## Python comprehensions
+
+Las Comprehensions son constructos que nos permiten generar una secuencia a partir de otra secuencia.
+
+Existen tres tipos de comprehensions:
+
+- List comprehensions
+
+```python
+[element for element in element_list if element_meets_condition]
+```
+
+- Dictionary comprehensions
+
+```python
+{key: element for element in element_list if element_meets_condition}
+```
+
+- Sets comprehensions
+
+```python
+{element for element in element_list if elements_meets_condition}
+```
+
+```python
+
+#LISTAS
+lista = list(range(100))
+pares = [numero for numero in lista if numero % 2 ==0] 
+
+
+#DICCIONARIOS
+>>> student_uid = [1,2,3]
+>>> students = ['Juan','Jose','Larsen']
+>>> students_with_uid = {uid:student for uid, student in zip(student_uid, students)}
+>>> students_with_uid
+{1: 'Juan', 2: 'Jose', 3: 'Larsen'}
+
+
+#SETS
+>>> import random
+>>> random_numbers = []
+>>> for i in range(10):
+...     random_numbers.append(random.randint(1,3))
+>>> random_numbers
+[3, 2, 2, 3, 1, 2, 2, 3, 2, 2]
+>>> non_repeated = {number for number in random_numbers}
+>>> non_repeated
+{1, 2, 3}
+
+```
+
+## Búsqueda Binaria.
+
+Uno de los conceptos más importantes que debes entender en tu carrera dentro de la programación son los algoritmos. No son más que una secuencia de instrucciones para resolver un problema específico.
+
+Búsqueda binaria lo único que hace es tratar de encontrar un resultado en una lista ordenada de tal manera que podamos razonar. Si tenemos un elemento mayor que otro, podemos simplemente usar la mitad de la lista cada vez.
+
+```python
+import random
+
+def binary_search(data,target, low, high):
+    if low > high:
+        return False
+
+    mid = (low + high) // 2
+
+    if target == data[mid]:
+        return True
+    elif target < data[mid]:
+        return binary_search(data,target, low, mid-1)
+    else:
+        return binary_search(data, target, mid+1, high)
+
+
+if __name__ == '__main__':
+    data = [random.randint(0,100) for i in range(10)]
+    data.sort()
+    print(data)
+    target = int(input('What number would you like to find?'))
+    found = binary_search(data, target,0, len(data)-1)
+    print(found)
+```
+
+## Manipulación de archivos en Python 3
+
+En esta clase aprenderás a persistir datos en python, para esto aprenderás a utilizar la función Open, y la función close, una vez tengas claro eso, podrás comenzar a manipular tus archivos, en este caso utilizaremos un CSV que es un estándar de archivos separados por comas.
 
